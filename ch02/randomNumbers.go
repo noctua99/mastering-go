@@ -8,8 +8,8 @@ import (
 	"time"
 )
 
-func random(min, max int) int {
-	return rand.Intn(max-min) + min
+func random(r *rand.Rand, min, max int) int {
+	return r.Intn(max-min) + min
 }
 
 func main() {
@@ -81,8 +81,7 @@ func main() {
 	// rand.Seed(SEED)
 	r := rand.New(rand.NewSource(SEED))
 	for i := 0; i < TOTAL; i++ {
-		// myrand := random(MIN, MAX)
-		myrand := r.Intn(MAX-MIN) + MIN
+		myrand := random(r, MIN, MAX)
 		fmt.Print(myrand)
 		fmt.Print(" ")
 	}
